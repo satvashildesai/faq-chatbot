@@ -3,13 +3,13 @@ from sqlalchemy.sql import func
 from app.db import Base
 from pgvector.sqlalchemy import Vector
 
-class Document(Base):
-    __tablename__ = "documents"
+class FAQ(Base):
+    __tablename__ = "faqs"
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(Text)
-    content = Column(Text, nullable=False)
-    source = Column(String)
-    source_id = Column(String)
-    embedding = Column(Vector(300))
+    question = Column(Text, nullable=False) # The FAQ question
+    answer = Column(Text, nullable=False)   # The FAQ answer
+    embedding = Column(Vector(300))         # Embedding of the QUESTION ONLY
+    source_name = Column(String)
     created_at = Column(TIMESTAMP, server_default=func.now())
+    

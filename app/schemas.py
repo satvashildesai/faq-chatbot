@@ -1,26 +1,24 @@
 from pydantic import BaseModel
 from typing import List, Optional
+from datetime import datetime
 
-class DocumentCreate(BaseModel):
-    title: Optional[str]
-    content: str
-    source: Optional[str]
-    source_id: Optional[str]
+class FAQRequest(BaseModel):
+    question: str
+    answer: str
+    source_name: Optional[str]
     embedding: List[float]
 
-
-class DocumentResponse(BaseModel):
+class FAQResponse(BaseModel):
     id: int
-    title: Optional[str]
-    content: str
-    source: Optional[str]
-    source_id: Optional[str]
+    question: str
+    answer: str
+    source_name: Optional[str]
+    created_at: datetime
+    similarity: float | None = None
 
     class Config:
-        orm_mode = True
-
-class SearchRequest(BaseModel):
-    embedding: List[float]
+        from_attributes = True  # Updated from orm_mode = True for Pydantic v2
 
 class SearchTextRequest(BaseModel):
     query: str
+    

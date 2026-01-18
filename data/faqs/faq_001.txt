@@ -1,8 +1,0 @@
-Q: What is your return policy?
-A: You can return any item within 30 days of purchase for a full refund. The item must be in original condition.
-
-Q: How do I track my order?
-A: After placing an order, you’ll receive a tracking link via email. Use it to see the delivery status.
-
-Q: How do I reset my password?
-A: Go to your account settings, click “Forgot Password,” and follow the instructions sent to your email.

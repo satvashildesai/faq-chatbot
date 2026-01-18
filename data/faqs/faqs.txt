@@ -1,0 +1,26 @@
+Q: What is Find A Sitter Today (FAST)? 
+A: FAST is an on-demand babysitting platform that connects families with vetted sitters in real-time. It operates similarly to a rideshare app, allowing you to book a sitter for immediate needs ("ASAP") or schedule one in advance.
+
+Q: How much does the service cost? 
+A: There are no subscription fees. Parents pay a flat rate of $29 per hour, and sitters earn $24 per hour. The $5 difference covers the platform's operations and safety features.
+
+Q: How are sitters vetted for safety? 
+A: Every sitter undergoes a rigorous three-level screening process, which includes criminal and sex offender registry checks via Checkr and individual interviews with child development experts and experienced educators.
+
+Q: Do I need to pay for a monthly subscription? 
+A: No, FAST does not require a subscription. You only pay for the specific bookings you make, allowing for a flexible, à la carte experience.
+
+Q: Can I track my sitter's arrival? 
+A: Yes, the app includes real-time GPS tracking so you can see your sitter's location and progress as they travel to your home.
+
+Q: How do I communicate with my sitter? 
+A: All communication happens within the FAST app. You can send messages and receive photo updates without ever having to share your personal phone number or contact information.
+
+Q: What is the cancellation policy? 
+A: While specific fees vary, the app includes rules for ASAP job cancellations. You will be notified of any applicable charges at the time of booking or cancellation within the app.
+
+Q: How do I pay my sitter? 
+A: All payments are handled securely through the app using Stripe. You do not need to worry about having cash on hand; the total is automatically calculated and processed once the job is complete.
+
+Q: Are parents also verified? 
+A: Yes. To ensure the safety of the sitters, parents and guardians must also be verified by submitting valid identification before they can book services.

@@ -1,27 +1,32 @@
 from sqlalchemy.orm import Session
-from app.models import Document
+from app.models import FAQ
 
-def insert_document(db: Session, title, content, source, source_id, embedding):
-    doc = Document(
-        title=title,
-        content=content,
-        source=source,
-        source_id=source_id,
+def insert_faq(db: Session, question, answer, source_name, embedding):
+    new_faq = FAQ(
+        question=question,
+        answer=answer,
+        source_name=source_name,
         embedding=embedding
     )
-    db.add(doc)
+    db.add(new_faq)
     db.commit()
-    db.refresh(doc)
-    return doc
+    db.refresh(new_faq)
+    return new_faq
 
-def get_all_documents(db:Session):
-   return db.query(Document).order_by(Document.id).all()
+def search_similar(db: Session, query_embedding, threshold=0.8, limit=1):
+    # Distance: 0 = identical, 2 = opposite
+    distance_func = FAQ.embedding.cosine_distance(query_embedding)
+    
+    # Similarity: 1 = identical, -1 = opposite
+    similarity_score = (1 - distance_func).label("similarity")
 
-
-def search_similar(db: Session, query_embedding, limit=5):
     return (
-        db.query(Document)
-        .order_by(Document.embedding.cosine_distance(query_embedding))
+        db.query(FAQ, similarity_score)
+        .filter(similarity_score >= threshold) # The 0.8 Threshold
+        .order_by(distance_func)
         .limit(limit)
         .all()
     )
+
+def get_all_faqs(db: Session):
+    return db.query(FAQ).all()
