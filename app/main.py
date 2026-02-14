@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session
+import math
 from app.deps import get_db
 from app.schemas import FAQRequest, FAQResponse, SearchTextRequest
 from app.services.document_service import insert_faq, search_similar, get_all_faqs
@@ -33,10 +34,11 @@ def search_by_text(body: SearchTextRequest, db: Session = Depends(get_db)):
     tokens = clean_text(body.query)
     query_embedding = get_embedding(tokens)
     results = search_similar(db, query_embedding)
-    
+
     formatted_results = []
     for faq, score in results:
-        faq.similarity = round(float(score), 4)
-        formatted_results.append(faq)
-    
+        if score is not None and not (math.isnan(score) or math.isinf(score)):
+            faq.similarity = round(float(score), 4)
+            formatted_results.append(faq)
+
     return formatted_results
